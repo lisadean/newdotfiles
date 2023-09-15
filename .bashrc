@@ -39,13 +39,14 @@ export REPO_DIR="$HOME/repos"
 function ld() { builtin cd "$@" && ls -laGFT; }
 
 # This is for working with my dotfiles repo
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias cgs='config status'
-alias cgs-untracked='config status -unormal'
+# alias config='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
+# alias cgs='config status'
+# alias cgs-untracked='config status -unormal'
 function git() {
     if [[ "$PWD" == "$HOME" ]]; then
       # echo "I'm home"
-      config "$@"
+      # config "$@"
+      /usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME "$@"
     else
       # echo "I'm not home"
       command git "$@"
