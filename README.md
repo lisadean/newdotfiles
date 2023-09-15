@@ -1,6 +1,10 @@
 # New dotfiles repo
 
-git files for the repo are stored in `~/.dotfiles` instead of `~/.git` like they would normally be
+Repository specific files for the repo are stored in `~/.dotfiles` instead of `~/.git` like they would normally be so there's less
+chance of conflict. The working tree is still `$HOME`
+
+The `git` command is replaced by a function that will run `git` commands against the bare `~/.dotfiles.git` repo when
+in the home directory and run the regular git command as usual when not.
 
 ## Setup on new computer
 
@@ -17,6 +21,8 @@ mkdir -p .config-backup && \
 config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | \
 xargs -I{} mv {} .config-backup/{}
 ```
+
+[Another possible issue when cloning to new computer](https://news.ycombinator.com/item?id=11079145)
 
 ## Reference
 
